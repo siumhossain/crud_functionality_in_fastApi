@@ -3,8 +3,13 @@ import schemas,models,database
 from sqlalchemy.orm import Session
 from database import SessionLocal
 from fastapi.encoders import jsonable_encoder
+from typing import List
+from hashing import Hash
+
+
 
 models.Base.metadata.create_all(bind=database.engine)
+
 
 app = FastAPI()
 
@@ -27,7 +32,7 @@ def create_post(request:schemas.Blog,db: Session=Depends(get_db)):
     db.refresh(new_blog)
     return new_blog
 
-@app.get('/blog/')
+@app.get('/blog/',response_model=List[schemas.ShowBlog])
 def get_blog(db: Session=Depends(get_db)):
     return db.query(models.Blog).all()
 @app.get('/blog/{id}/',status_code=200)
@@ -57,6 +62,15 @@ def update_post(id,request:schemas.Blog,db: Session=Depends(get_db)):
         update_blog = get_blog.update(dict(request))
         db.commit()
         return request
+
+@app.post('/user/',response_model=schemas.UserShow)
+def createUser(request:schemas.User,db: Session=Depends(get_db)):
+    user = models.User(name=request.name,email=request.email,password=Hash.bcrypt(request.password))
+    db.add(user)
+    db.commit()
+    db.refresh(user)
+    return request
+
     
 
 

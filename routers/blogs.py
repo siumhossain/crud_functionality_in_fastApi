@@ -3,6 +3,7 @@ from typing import List
 import schemas,database,models
 from sqlalchemy.orm import Session
 from crud import blog,user
+import oauth2
 
 get_db = database.get_db
 router = APIRouter(
@@ -10,7 +11,7 @@ router = APIRouter(
     prefix="/blog"
 )
 @router.get('/',response_model=List[schemas.ShowBlog])
-def get_blog(db: Session=Depends(get_db)):
+def get_blog(db: Session=Depends(get_db),current_user: schemas.UserBase = Depends(oauth2.get_current_user)):
     return blog.get(db)
 
 @router.get('/{id}/',status_code=200,response_model=schemas.ShowBlog,tags = ['Blogs'])

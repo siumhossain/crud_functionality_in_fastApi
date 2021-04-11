@@ -20,6 +20,11 @@ class UserShow(BaseModel):
     blogs: List[Blog] = []
     class Config:
         orm_mode = True
+class UserBase(BaseModel):
+    name:str
+    email:str
+    class Config:
+        orm_mode = True
 class ShowBlog(BaseModel):
     title:str 
     body:str
@@ -28,6 +33,17 @@ class ShowBlog(BaseModel):
     class Config:
         orm_mode = True
 
+class Login(BaseModel):
+    email:str
+    password:str
+
+class Token(BaseModel):
+    access_token: str
+    token_type: str
+
+
+class TokenData(BaseModel):
+    email: Optional[str] = None
 
 
 

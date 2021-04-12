@@ -49,4 +49,6 @@ Implement crud functionality using fastApi
   ```
 
 Doc link for this API --> [click here](http://127.0.0.1:8000/docs)
+
+Fast API doc --> [click here](https://fastapi.tiangolo.com/)
   

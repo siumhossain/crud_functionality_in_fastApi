@@ -19,7 +19,7 @@ Implement crud functionality using fastApi
   ```
 * Activate Virtualenv
   ```bash
-  source x/source/bin/activate
+  source x/bin/activate
   ```
 * Clone this project
   ```bash

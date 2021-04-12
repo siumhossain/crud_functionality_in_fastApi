@@ -1,4 +1,4 @@
-# crud_functionality_in_fastApi
+# Crud_functionality_in_fastAPI
 
 Implement crud functionality using fastApi
 

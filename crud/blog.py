@@ -26,7 +26,7 @@ def update(id,request:schemas.ShowBlog,db):
         update_blog = get_blog.update(dict(request))
         db.commit()
         return request
-def delete(id,request:schemas.ShowBlog,db):
+def delete(id,db):
     delete_blog = db.query(models.Blog).filter(models.Blog.id==id)
     #print(delete_blog)
     if not delete_blog.first():

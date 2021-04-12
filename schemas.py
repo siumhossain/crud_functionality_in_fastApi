@@ -8,6 +8,11 @@ class Blog(BaseModel):
     body:str
     class Config:
         orm_mode = True
+class UserBase(BaseModel):
+    name:str
+    email:str
+    class Config:
+        orm_mode = True
 
 class User(BaseModel):
     name:str
@@ -28,7 +33,7 @@ class UserBase(BaseModel):
 class ShowBlog(BaseModel):
     title:str 
     body:str
-    creator:UserShow
+    creator:UserBase
 
     class Config:
         orm_mode = True

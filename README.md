@@ -33,7 +33,7 @@ Implement crud functionality using fastApi
   ```bash
   touch sql.db
   ```
-  Go to database.py and change this line for connect with database
+  Go to `database.py` and change this line for connect with database
   
   SQLALCHEMY_DATABASE_URL = "sqlite:///./sql.db"
   
